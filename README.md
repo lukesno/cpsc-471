@@ -12,4 +12,4 @@ In client folder, run
 ## Running server (Node.js/Express.js APIs):
  
 In server folder, run
-### `yarn start`
+### `node app.js`
