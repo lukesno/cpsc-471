@@ -3,13 +3,13 @@ Final Project for CSPC 471
 
 
 
-## Running client (React website):
+### Running client (React website):
 
 In client folder, run
-### `yarn start`
+#### `yarn start`
 
 
-## Running server (Node.js/Express.js APIs):
+### Running server (Node.js/Express.js APIs):
  
 In server folder, run
-### `node app.js`
+#### `node app.js`
