@@ -24,11 +24,26 @@ app.get("/auth", async (req, res) => {
 *  Notes:
 *  - Returns a error if username already in use.
 */
-app.post("/signup", async (req, res) => {
+app.post("/auth", async (req, res) => {
 })
 
 
 // --------------------------------------------------------------------------------------------- //
+
+
+/* Property Search API
+*  Request Type: GET
+*  
+*  User provides: 
+*  -> either "near me" or "near a selected school"
+*  -> country and province
+*  -> distance range
+*
+*  Notes:
+*  - Properties are returned based on distance (km) calculated between specified user location and potential properties.
+*/
+app.get('/property', (req, res) => {
+})
 
 
 /* Publish Property API
@@ -56,6 +71,18 @@ app.delete('/property/delete/:id', (req, res) => {
 })
 
 
+/* Property Email API
+*  Request Type: GET
+*  
+*  User provides: Property ID
+*
+*  Notes:
+*  - Returns email of landlord of selected property
+*/
+app.get('/property/email', (req, res) => {
+})
+
+
 // --------------------------------------------------------------------------------------------- //
 
 
@@ -73,36 +100,50 @@ app.delete('/property/delete/:id', (req, res) => {
 app.get('/convert', (req, res) => {
 })
 
-
-/* Search Property API
+/* Distance Calculation API
 *  Request Type: GET
 *  
-*  User provides: 
-*  -> either "near me" or "near a selected school"
-*  -> distance range
+*  Internal API used by GET '/property'
+*  Provided with 2 coordinates, return distance between them
+*  Property coordinates passed in here will be in the country and province specified by user input (reducing number of calculations per search)
 *
 *  Notes:
-*  - Properties are returned based on distance (km) calculated between specified user location and potential properties.
+*  - Utilizes Haversine algorithm to convert longitude/latitude distances to km
 */
-app.get('/search', (req, res) => {
+app.get('/distance', (req, res) => {
 })
 
 
 // --------------------------------------------------------------------------------------------- //
 
-/* Search Property API
-*  Request Type: GET
+
+/* Post Review API
+*  Request Type: POST
 *  
-*  User provides: 
-*  -> either "near me" or "near a selected school"
-*  -> distance range
+*  User provides: Property posting id, user id, review text
 *
 *  Notes:
-*  - Properties are returned based on distance (km) calculated between specified user location and potential properties.
+*  - Posts review to selected property posting
 */
-app.get('/messages/:', (req, res) => {
+
+app.post('/review/:id', (req, res) => {
 })
 
+
+/* Delete Review API
+*  Request Type: DELETE
+*  
+*  User provides: Property posting id, user id, review text
+*
+*  Notes:
+*  - Deletes review of selected property posting
+*/
+
+app.delete('/review/:id', (req, res) => {
+})
+
+
+// --------------------------------------------------------------------------------------------- //
 
 var server = app.listen(8081, function () {
    var host = server.address().address
