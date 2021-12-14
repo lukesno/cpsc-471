@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main{
+    min-height: 100vh;
+    background: #03108bbe;
+    display: flex;
+    font-family: sans-serif;
+}
+
+.container{
+    margin: auto;
+    width: 500px;
+    max-width: 90%;
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 100px;
+    font-size: 700%;
+    color: #ffffff;
+    font-family: 'Archivo';
+}
+
+.container form{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0,0,0,.3);
+}
+
+.container form .form-group{
+    color: #03108bbe;
+    font-size: 25px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container form h1{
+    text-align: center;
+    margin-bottom: 24px;
+    color: #03108bbe;
+}
+
+.container form h2{
+    text-align: center;
+    margin-bottom: 5px;
+    color: #000000;
+    font-size: 20px;
+}
+
+.container form h3{
+    text-align: center;
+    margin-bottom: 5px;
+    color: #000000;
+    font-size: 15px;
+}
+
+.container form .form-control{
+    width: 100%;
+    height: 40px;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid silver;
+    margin: 10px 0 18px 0;
+    padding: 0 10px;
+}
+
+.container form .btn{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 34px;
+    border: none;
+    outline: none;
+    background: #03108bbe;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 4px;
+    transition: .3s;
+    margin-bottom: 50px;
+}
+
+.container a{
+    color: #000000;
+    margin-left: 34%
+}

@@ -1,0 +1,31 @@
+.Navbar {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #03108bbe;
+  }
+
+h1 {
+    color: #ffffff;
+  }
+
+.links {
+    margin-left: auto;
+  }
+
+a {
+    margin-left: 16px;
+    text-decoration: none;
+    padding: 6px;
+    color: #ffffff;
+  }
+
+h1{
+    text-align: left;
+    padding-left: 5%;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    font-size: 65px;
+ }
