@@ -5,7 +5,6 @@ import Login from './Pages/Login';
 import Profile from  './Pages/Profile';
 import Navbar from './Components/Navbar';
 import Search from './Pages/Search';
-import PropertyRegistration from './Pages/PropertyRegistration';
 
 function App() {
 

@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import './Search.css';
 
-
 export default function Search() {
 
     const [university, setUniversity] = useState('University of Calgary');
