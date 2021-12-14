@@ -1,6 +1,13 @@
+const { response } = require('express');
 var express = require('express');
 var app = express();
+var axios = require('axios');
 
+// API key for Google's Geocoding API 
+const API_KEY = "AIzaSyBPt450BqjohjdB1l0rded7zyoXKbTc2II";
+
+//
+const geolib = require('geolib');
 // --------------------------------------------------------------------------------------------- //
 
 
@@ -13,6 +20,14 @@ var app = express();
 *  - ID for user returned if provided username and password were found in the database
 */
 app.get("/auth", async (req, res) => {
+   let temp = {
+      UID: "e7f9851d-d304-4af2-b5d8-33b85abca028",
+      first_name: "Luke",
+      last_name: "Son",
+      user_type: "landlord",
+   }
+
+   res.send(temp)
 })
 
 
@@ -25,6 +40,8 @@ app.get("/auth", async (req, res) => {
 *  - Returns a error if username already in use.
 */
 app.post("/auth", async (req, res) => {
+
+   res.send("Sign up successful!")
 })
 
 
@@ -43,6 +60,21 @@ app.post("/auth", async (req, res) => {
 *  - Properties are returned based on distance (km) calculated between specified user location and potential properties.
 */
 app.get('/property', (req, res) => {
+
+   let temp = {
+      property_id: 136,
+      name: "Dalgetty Drive",
+      address: "5736 Dalgetty Drive NW",
+      country: "Canada",
+      province: "Alberta",
+      monthly_cost: "500",
+      min_term: "4",
+      max_term: "16",
+      landlord_id: "e7f9851d-d304-4af2-b5d8-33b85abca028",
+      img: "https://s3.amazonaws.com/lws_lift/shelter/images/gallery/full/1550964127_calgary_residential_photos_017.jpg"
+   }
+
+   res.send(temp)
 })
 
 
@@ -56,6 +88,8 @@ app.get('/property', (req, res) => {
 *  - Uses Property model to populate fields and post to Property schema
 */
 app.post('/property/publish', (req, res) => {
+
+   res.send("Property posted.")
 })
 
 
@@ -68,6 +102,7 @@ app.post('/property/publish', (req, res) => {
 *  - Used when landlord wants to delete one of their properties
 */
 app.delete('/property/delete/:id', (req, res) => {
+   res.send("Deletion successful.")
 })
 
 
@@ -80,6 +115,12 @@ app.delete('/property/delete/:id', (req, res) => {
 *  - Returns email of landlord of selected property
 */
 app.get('/property/email', (req, res) => {
+   let temp = {
+      landlord_id: "e7f9851d-d304-4af2-b5d8-33b85abca028",
+      landlord_email: "demo@gmail.com",
+   }
+
+   res.send(temp)
 })
 
 
@@ -97,7 +138,21 @@ app.get('/property/email', (req, res) => {
 *  - Used to convert addresses to coordinates (longtitude, latitude) in order to support distance based searches for users
 *  - We will be utilizing Google's Geocoding API in order obtain coordinates for specified addresses.
 */
-app.get('/convert', (req, res) => {
+app.get('/convert/:address', async (req, res) => {
+   // IMPORTANT: Make sure requests are sent with addresses that are separated with + and not spaces
+   // Ex: 2500+University+Dr+NW+CA instead of 2500 University Dr NW CA
+   const address = req.params.address
+
+   const URL = "https://maps.googleapis.com/maps/api/geocode/json?" +
+   `address=${address}&key=${API_KEY}`;
+
+   try {
+      const response = await axios.get(URL);
+      res.send(response.data)
+   } catch (err) {
+      console.log(err);
+   }
+
 })
 
 /* Distance Calculation API
@@ -110,7 +165,24 @@ app.get('/convert', (req, res) => {
 *  Notes:
 *  - Utilizes Haversine algorithm to convert longitude/latitude distances to km
 */
-app.get('/distance', (req, res) => {
+app.get('/distance/:home/:uni', async (req, res) => {
+   // IMPORTANT: Pass in addresses with + instead of spaces
+   // Ex: 2500+University+Dr+NW+CA instead of 2500 University Dr NW CA
+   try {
+      const response1 = await axios.get(`http://localhost:8081/convert/${req.params.home}`)
+      const response2 = await axios.get(`http://localhost:8081/convert/${req.params.uni}`)
+
+      const coords1 = response1.data.results[0].geometry.location;
+      const coords2 = response2.data.results[0].geometry.location;
+
+      const distance = geolib.getDistance(
+         {latitude: coords1.lat, longitude: coords1.lng}, 
+         {latitude: coords2.lat, longitude: coords2.lng})
+
+      res.send({meter: distance, kilometer: distance/1000});
+   } catch (err) {
+      console.log(err);
+   }
 })
 
 
@@ -127,6 +199,7 @@ app.get('/distance', (req, res) => {
 */
 
 app.post('/review/:id', (req, res) => {
+   res.send("Review successfully posted!")
 })
 
 
@@ -140,6 +213,7 @@ app.post('/review/:id', (req, res) => {
 */
 
 app.delete('/review/:id', (req, res) => {
+   res.send("Review successfully deleted!")
 })
 
 
