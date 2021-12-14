@@ -1,0 +1,32 @@
+.searchForm{
+    padding: 30px;
+}
+
+.searchFormGroup{
+    padding-bottom: 40px;
+    float:left;
+    width: 33%;
+    font-size: 25px;
+    font-family: Helvetica;
+}
+
+.searchForm label{
+    padding: 10px;
+    text-align: left;
+}
+
+.searchForm select, .searchForm input{
+    padding: 10px;
+}
+
+.searchForm button{
+    padding: 10px;
+    background-color: #333333;
+    color: #ffffff;
+    width: 30%;
+}
+
+.searchForm button:hover{
+    background: blue;
+    color: #ffffff;
+}

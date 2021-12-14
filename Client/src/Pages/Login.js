@@ -25,14 +25,6 @@ export default function Login() {
                     </div>
                 </form>
             </div>
-
-            <div>
-                <footer>
-
-                </footer>
-            </div>
-
         </body>
     )
-
 }
