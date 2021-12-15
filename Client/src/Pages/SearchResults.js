@@ -9,4 +9,4 @@ const SearchResults = ({searchResults}) => {
     )
 }
 
-export default SearchResults
+export default SearchResults;
