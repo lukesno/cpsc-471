@@ -2,14 +2,39 @@ const { response } = require('express');
 var express = require('express');
 var app = express();
 var axios = require('axios');
+const cors = require('cors');
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+app.use(cors(corsOptions));
 
 // API key for Google's Geocoding API 
 const API_KEY = "AIzaSyBPt450BqjohjdB1l0rded7zyoXKbTc2II";
-
-//
 const geolib = require('geolib');
-// --------------------------------------------------------------------------------------------- //
 
+
+// Database - Sqlite
+
+const sqlite3 = require('sqlite3').verbose()
+const md5 = require('md5');
+const { reset } = require('nodemon');
+
+const DBSOURCE = 'db.sqlite'
+
+
+let db = new sqlite3.Database('./ensf471.db', (err) => {
+    if(err) {
+       // error occured, cannot open
+       console.log(err.message)
+    } 
+
+    console.log("Connected to db!")
+ })
+
+
+// --------------------------------------------------------------------------------------------- //
 
 /* User Authentication API
 *  Request Type: GET
@@ -20,14 +45,21 @@ const geolib = require('geolib');
 *  - ID for user returned if provided username and password were found in the database
 */
 app.get("/auth", async (req, res) => {
-   let temp = {
-      UID: "e7f9851d-d304-4af2-b5d8-33b85abca028",
-      first_name: "Luke",
-      last_name: "Son",
-      user_type: "landlord",
-   }
+   // username, password checked in database
+   // check in database line
 
-   res.send(temp)
+   var sql = "select * from auth"
+   // var sql2 = "INSERT INTO auth (username, password) VALUES ('abc123', 'abc123')"
+   var params = []
+
+   db.all(sql, params, (err, rows) => {
+      if (err) {
+         console.log(err.message)
+      } 
+      res.json({
+         "data": rows
+      })
+   })
 })
 
 

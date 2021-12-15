@@ -2,6 +2,14 @@ import './Login.css';
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
 export default function Login() {
+    const loginCheck = () => {
+        fetch("http://localhost:8081/auth", {method: "GET"})
+        .then(response => {return response.json()})
+        .then(res => console.log(res.data[0].username))
+        
+    };
+
+
     return (
 
         <body class="main">
@@ -20,7 +28,7 @@ export default function Login() {
                         <input class="form-control" type="password" />
                     </div>
                     <Link to="/search">
-                        <button class="btn" type="submit">Submit</button>
+                        <button class="btn" type="submit" onClick={loginCheck}>Submit</button>
                     </Link>
                     <div>
                         <h3>New user?</h3>

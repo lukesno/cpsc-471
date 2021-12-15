@@ -21,7 +21,7 @@ export default function Search() {
     return (
         <form onSubmit = {handleSubmit}>
             <div class = "searchFormGroup">
-                <label> University: </label> 
+                <label>University: </label> 
                 <select
                     value={university}
                     onChange={(e) => setUniversity(e.target.value)}
