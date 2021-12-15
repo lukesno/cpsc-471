@@ -1,5 +1,6 @@
 import './PropertyRegistration.css';
 import { useState } from 'react';
+import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
 export default function UserRegistration() {
 
@@ -52,8 +53,9 @@ export default function UserRegistration() {
                     </label>
 
                 </fieldset>
-
-                <button onClick={registerClicked} type="submit">Submit</button>
+                <Link to="/">
+                    <button onClick={registerClicked} type="submit">Submit</button>
+                </Link>
             </form>
         </div>
     )

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
 import './Search.css';
 
@@ -42,7 +43,9 @@ export default function Search() {
                 </input>
             </div>
             <div class = "searchFormGroup">
-                <button onClick = {searchClicked}> Search </button>
+                <Link to="/search-results">
+                    <button onClick = {searchClicked}> Search </button>
+                </Link>
             </div>            
         </form>
     )
