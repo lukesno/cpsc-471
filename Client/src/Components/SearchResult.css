@@ -1,0 +1,24 @@
+.searchResult{
+    background: #b1c6ec;
+    margin-top: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+h3{
+    margin: 2%;
+    padding: 0;
+    height: 1px;
+    font-size: 20px;
+    display: flex;
+}
+
+p {
+    white-space: pre;
+    padding-left: 30px;
+    text-align: left;
+    display: flex;
+}
