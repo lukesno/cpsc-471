@@ -13,6 +13,18 @@ export default function PropertyRegistration() {
     const [furnishing, setFurnishing] = useState('');
     const [sqFeet, setSqFeet] = useState('');
 
+
+    const [landlordID, setLandlordID] = useState('')
+
+    const register = () => {
+        console.log("Register button clicked");
+
+        navigate('/user/user_id', {state: searchResult})
+        const x = { address, type, bed, bath, rent, furnishing, sqFeet, landlordID };
+        console.log(x);
+        fetch(`http://localhost:8081/user/${address}/${type}/${bed}/${bath}/${rent}/${furnishing}/${sqFeet}`, {method: "POST"})
+    };
+
     const handleSubmit = event => {
         event.preventDefault();
     }
