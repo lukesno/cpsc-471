@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
 export default function Login() {
     const loginCheck = () => {
-        fetch("http://localhost:8081/auth", {method: "GET"})
-        .then(response => {return response.json()})
-        .then(res => console.log(res.data[0].username))
+        // fetch("http://localhost:8081/auth", {method: "GET"})
+        // .then(response => {return response.json()})
+        // .then(res => console.log(res.data[0].username))
         
     };
 

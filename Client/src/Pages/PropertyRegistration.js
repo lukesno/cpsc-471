@@ -11,7 +11,6 @@ export default function PropertyRegistration() {
     const [furnishing, setFurnishing] = useState('');
     const [sqFeet, setSqFeet] = useState('');
 
-
     const handleSubmit = event => {
         event.preventDefault();
     }
