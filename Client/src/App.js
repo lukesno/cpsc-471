@@ -10,10 +10,9 @@ import Navbar from './Components/Navbar';
 import Search from './Pages/Search';
 import UserRegistration from './Pages/UserRegistration';
 import PropertyView from './Pages/PropertyView';
+import PropertyRegistration from './Pages/PropertyRegistration';
 
 function App() {
-
-  // sample data to display search results
 
   return (
     <BrowserRouter>
@@ -24,6 +23,7 @@ function App() {
             <Route exact path="/profile" element={<div><Navbar/><Profile/></div>}/>
             <Route exact path="/register" element={<div><UserRegistration/></div>}/>
             <Route exact path="/search/property" element={<div><Navbar/><PropertyView /></div>}/>
+            <Route exact path="/register-property" element={<div><Navbar/><PropertyRegistration/></div>}/>
           </Routes>
       </div>
     </BrowserRouter>
