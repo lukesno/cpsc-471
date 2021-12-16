@@ -30,7 +30,7 @@ export default function MenuBar() {
             <h1>UniRent</h1>
             <div className="links">
                 <span style={{color: "white", cursor: "pointer"}} onClick={goSearch}>Search&nbsp;&nbsp;&nbsp;</span>
-                <span style={{color: "white", cursor: "pointer"}} onClick={goRegisterProperty}>Register Propert&nbsp;&nbsp;&nbsp;</span>
+                <span style={{color: "white", cursor: "pointer"}} onClick={goRegisterProperty}>Register Property&nbsp;&nbsp;&nbsp;</span>
                 <span style={{color: "white", cursor: "pointer"}} onClick={goProfile}>Profile&nbsp;&nbsp;&nbsp;</span>
                 <span style={{color: "white", cursor: "pointer"}} onClick={goLogout}>Logout&nbsp;&nbsp;&nbsp;</span>
             </div>
