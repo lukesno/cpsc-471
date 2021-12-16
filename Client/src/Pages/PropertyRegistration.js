@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom'; 
 
 export default function PropertyRegistration() {
-
+    const location = useLocation();
+    console.log(location.state)
+    
     const [address, setAddress] = useState('');
     const [type, setType] = useState('');
     const [bed, setBed] = useState('');
