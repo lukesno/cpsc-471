@@ -2,12 +2,16 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import SearchResult from '../Components/SearchResult';
 import './Search.css';
+import { useLocation } from 'react-router-dom'; 
 
 export default function Search() {
 
     const [university, setUniversity] = useState('University of Calgary');
     const [distance, setDistance] = useState('');
     const [propertyFound, setPropertyFound] = useState([]);
+
+    const location = useLocation();
+    console.log(location.state)
 
     const handleSubmit = (e) => {
         e.preventDefault();
