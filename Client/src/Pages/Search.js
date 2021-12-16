@@ -25,11 +25,12 @@ export default function Search() {
                 <select
                     value={university}
                     onChange={(e) => setUniversity(e.target.value)}
-                >
-                    <option selected value="University of Calgary">University of Calgary</option>
-                    <option value="Mount Royal University">Mount Royal University</option>
-                    <option value="SAIT">SAIT</option>
-                    <option value="Bow Valley College">Bow Valley College</option>
+                >  
+                    {/* Improvement for future: create a table in db full of all universities for scalability */}
+                    <option selected value="2500 University Dr NW, Calgary, AB, Canada">University of Calgary</option>
+                    <option value="4825 Mt Royal Gate SW, Calgary, AB, Canada">Mount Royal University</option>
+                    <option value="1301 16 Ave NW, Calgary, AB, Canada">SAIT</option>
+                    <option value="345 6 Ave SE, Calgary, AB, Canada">Bow Valley College</option>
                 </select>
             </div>
             <div class = "searchFormGroup">
