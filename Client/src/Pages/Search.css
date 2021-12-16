@@ -2,13 +2,13 @@ form{
     padding: 50px;
 }
 
-.searchFormGroup{
+/* .searchFormGroup{
     padding-bottom: 40px; 
     float:left;
     width: 33.3%;
     font-size: 25px;
     font-family: Helvetica;
-}
+} */
 
 form label{
     padding: 10px;
@@ -23,10 +23,19 @@ form button{
     padding: 10px;
     background-color: #333333;
     color: #ffffff;
-    width: 30%;
 }
 
 form button:hover{
     background: blue;
     color: #ffffff;
+} 
+
+.formContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.searchButton {
+    width: 70px;
 }
