@@ -89,9 +89,26 @@ app.get("/user/:email/:password", async (req, res) => {
 *  Notes:
 *  - Returns a error if username already in use.
 */
-app.post("/auth", async (req, res) => {
+app.post("/user/:email/:password/:type/:name", async (req, res) => {
 
-   res.send("Sign up successful!")
+   console.log("hi")
+
+   var sql = `INSERT into USER (name, email, password, type) values (\"${req.params.name}\", \"${req.params.email}\", \"${req.params.password}\", \"${req.params.type}\")`
+   
+   //var sql = `INSERT into review (name, time, text, property_id) VALUES (\"${req.params.name}\", \"${current.toLocaleString()}\", \"${req.params.text}\", ${parseInt(req.params.property_id)})`
+
+   console.log(sql)
+   console.log("bye")
+
+   var params = []
+
+   
+   db.all(sql, params, (err, rows) => {
+      if (err) {
+         console.log(err.message)
+      }
+      console.log("added user successfully")
+   })
 })
 
 
