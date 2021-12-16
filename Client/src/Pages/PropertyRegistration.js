@@ -1,4 +1,3 @@
-import './PropertyRegistration.css';
 import { useState } from 'react';
 
 export default function PropertyRegistration() {
@@ -22,7 +21,7 @@ export default function PropertyRegistration() {
     }
 
     return (
-        <div className="wrapper">
+        <div className="propertyRegistration">
             <h2>Register a property:</h2>
 
             <form onSubmit={handleSubmit}>
@@ -64,13 +63,23 @@ export default function PropertyRegistration() {
                     </label>
 
                     <label>
-                        <p>Furnishing</p>
+                        <p>Furnished</p>
                         <select name="type" value={type} onChange={(e) => setFurnishing(e.target.value)}>
                             <option value="">--Please choose an option--</option>
                             <option value="furnished">Furnished</option>
                             <option value="unfurnished">Unfurnished</option>
                         </select>
                     </label>
+
+                    <label>
+                        <p>Insurance Information</p>
+                        <input/>
+                    </label>      
+
+                    <label>
+                        <p>Insurance Coverage Amount</p>
+                        <input/>
+                    </label>                                  
 
                 </fieldset>
                 <button onClick={registerClicked} type="submit">Submit</button>
