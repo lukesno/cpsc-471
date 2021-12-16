@@ -9,7 +9,6 @@ export default function Login() {
         
     };
 
-
     return (
 
         <body class="main">
@@ -30,9 +29,8 @@ export default function Login() {
                     <Link to="/search">
                         <button class="btn" type="submit" onClick={loginCheck}>Submit</button>
                     </Link>
-                    <div>
-                        <h3>New user?</h3>
-                        <Link to="/register">click here to sign up</Link>
+                    <div class = "register-text">
+                        <Link to="/register">New User? Click Here.</Link>
                     </div>
                 </form>
             </div>
