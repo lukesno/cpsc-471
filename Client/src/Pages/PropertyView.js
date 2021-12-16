@@ -4,8 +4,6 @@ import { useLocation } from 'react-router-dom';
 const PropertyView = () => {
 
     const location = useLocation();
-    const current = new Date()    
-    // console.log(current.toLocaleString())
     const [reviews, setReviews] = useState([{}])
 
     const [currName, setCurrName] = useState('')

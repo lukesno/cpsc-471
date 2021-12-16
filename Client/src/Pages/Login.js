@@ -14,8 +14,15 @@ export default function Login() {
         .then(response => {return response.json()}) 
         .then(auth => {
             console.log(auth) 
-            setUser(auth.data.user)})
+            setUser(auth.data.user)
+            if(auth.data.isAuthentic == true) {
+                navigate('/search', {state: user})
+            }
+        })
     };
+
+    const navigate = useNavigate();
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,9 +45,9 @@ export default function Login() {
                         <h2>Password:</h2>
                         <input class="form-control" type="password" onChange={(e) => setPassword(e.target.value)}/>
                     </div>
-                    <Link to="/search">
-                        <button class="btn" type="submit" onClick={loginCheck}>Submit</button>
-                    </Link>
+
+                    <button class="btn" type="submit" onClick={loginCheck}>Submit</button>
+    
                     <div class = "register-text">
                         <Link to="/register">New User? Click Here.</Link>
                     </div>
