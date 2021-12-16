@@ -18,7 +18,7 @@ export default function Login() {
                 <form action="">
                     <h1>Login</h1>
                     <div class="form-group">
-                        <h2>Username:</h2>
+                        <h2>Email:</h2>
                         <input class="form-control" type="username" />
                     </div>
 
