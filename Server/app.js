@@ -282,6 +282,30 @@ app.get('/retrieve/:uni/:distance', async (req, res) => {
 
 // --------------------------------------------------------------------------------------------- //
 
+/* Get Review API
+*  Request Type: POST
+*  
+*  User provides: Property posting id, user id, review text
+*
+*  Notes:
+*  - Posts review to selected property posting
+*/
+
+app.get('/review/:id', (req, res) => {
+
+   var sql = `select * from review where property_id=${req.params.id}`
+   var params = []
+
+   db.all(sql, params, (err, rows) => {
+      if (err) {
+         console.log(err.message)
+      } 
+
+
+      res.json(rows)
+      
+   })
+})
 
 /* Post Review API
 *  Request Type: POST
@@ -292,8 +316,19 @@ app.get('/retrieve/:uni/:distance', async (req, res) => {
 *  - Posts review to selected property posting
 */
 
-app.post('/review/:id', (req, res) => {
-   res.send("Review successfully posted!")
+app.post('/review/:id/:name/:text/:property_id', (req, res) => {
+   const current = new Date()
+   var sql = `INSERT into review (name, time, text, property_id) VALUES (\"${req.params.name}\", \"${current.toLocaleString()}\", \"${req.params.text}\", ${parseInt(req.params.property_id)})`
+   console.log(sql)
+   var params = []
+   console.log(req.body)
+
+   db.all(sql, params, (err, rows) => {
+      if (err) {
+         console.log(err.message)
+      } 
+   })
+   res.send("Successfully inputted!")
 })
 
 
