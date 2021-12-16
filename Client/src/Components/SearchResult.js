@@ -3,9 +3,9 @@ import './SearchResult.css';
 const SearchResult = ({searchResult}) => {
     return(
         <div className="searchResult">
-            <h3>{searchResult.address} - ${searchResult.rentPrice}</h3>
+            <h3>{searchResult.address} - ${searchResult.rent_price}</h3>
             <p>
-                Property Type: {searchResult.type}   Beds: {searchResult.noBeds}   Baths: {searchResult.noBaths}   Furnished? {searchResult.furnished}   Square Feet: {searchResult.squareFeet}    
+                Distance From University: {`${searchResult.distance}km`}        Property Type: {searchResult.type}      Beds: {searchResult.no_beds}        Baths: {searchResult.no_baths}      Furnished?: {"True" ? searchResult.furnished == 1 : "False"}        Square Feet: {searchResult.sq_feet}    
             </p>
         </div>
     )

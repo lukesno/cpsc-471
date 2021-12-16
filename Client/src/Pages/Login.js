@@ -3,12 +3,11 @@ import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
 export default function Login() {
     const loginCheck = () => {
-        fetch("http://localhost:8081/auth", {method: "GET"})
-        .then(response => {return response.json()})
-        .then(res => console.log(res.data[0].username))
+        // fetch("http://localhost:8081/auth", {method: "GET"})
+        // .then(response => {return response.json()})
+        // .then(res => console.log(res.data[0].username))
         
     };
-
 
     return (
 
@@ -19,7 +18,7 @@ export default function Login() {
                 <form action="">
                     <h1>Login</h1>
                     <div class="form-group">
-                        <h2>Username:</h2>
+                        <h2>Email:</h2>
                         <input class="form-control" type="username" />
                     </div>
 
@@ -30,9 +29,8 @@ export default function Login() {
                     <Link to="/search">
                         <button class="btn" type="submit" onClick={loginCheck}>Submit</button>
                     </Link>
-                    <div>
-                        <h3>New user?</h3>
-                        <Link to="/register">click here to sign up</Link>
+                    <div class = "register-text">
+                        <Link to="/register">New User? Click Here.</Link>
                     </div>
                 </form>
             </div>

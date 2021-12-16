@@ -1,0 +1,44 @@
+.wrapper{
+    height: 100vh;  
+    background-color: #03108bbe;
+}
+
+.wrapper form{
+    margin-top: 5%;
+    margin-left: 41%;
+    margin-right: 35%;
+}
+
+h2{
+    color: white;
+}
+
+p{
+    width: 100px;
+    margin-top: 50px;
+    font-size: 20px;
+    color: white;
+}
+
+input{
+    width: 207px;
+    float: left;
+}
+
+select{
+    float: left;
+    background-color: white;
+}
+
+button{
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #333333;
+    color: #ffffff;
+    width: 10%;
+}
+
+button:hover{
+    background: blue;
+    color: #ffffff;
+}
