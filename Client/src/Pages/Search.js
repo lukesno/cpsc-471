@@ -30,7 +30,7 @@ export default function Search() {
         <div>
             <form onSubmit={handleSubmit} style={{width: "100%"}}>
                 <div class="formContainer">
-                    <div class = "universitySelect">
+                    <div class="universitySelect">
                         <label>University: </label> 
                         <select
                             value={university}
@@ -43,7 +43,7 @@ export default function Search() {
                             <option value="345+6+Ave+SE,+Calgary,+AB,+Canada">Bow Valley College</option>
                         </select>
                     </div>
-                    <div class = "distanceSelect">
+                    <div class="distanceSelect">
                         <label>Max Distance (km)</label>
                         <input
                             type = "text"
@@ -53,7 +53,7 @@ export default function Search() {
                         >
                         </input>
                     </div>
-                    <div class = "searchButton">
+                    <div class="searchButton">
                         <button onClick = {searchClicked}> Search </button>
                     </div>     
                 </div>

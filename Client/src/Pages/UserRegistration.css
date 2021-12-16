@@ -9,7 +9,7 @@
     margin-right: 35%;
 }
 
-h2{
+/* h2{
     color: white;
 }
 
@@ -29,16 +29,14 @@ select{
     float: left;
     background-color: white;
 }
-
+*/
 button{
-    margin-top: 50px;
     padding: 10px;
     background-color: #333333;
     color: #ffffff;
-    width: 10%;
 }
 
 button:hover{
     background: blue;
     color: #ffffff;
-}
+} 
