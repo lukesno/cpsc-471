@@ -1,13 +1,24 @@
 import './Login.css';
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
 export default function Login() {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [user, setUser] = useState({})
+
     const loginCheck = () => {
-        // fetch("http://localhost:8081/auth", {method: "GET"})
-        // .then(response => {return response.json()})
-        // .then(res => console.log(res.data[0].username))
-        
-    };
+        fetch(`http://localhost:8081/user/${email}/${password}`, {method: "GET"})
+        .then(response => {return response.json()}) 
+        .then(auth => {
+            console.log(auth) 
+            setUser(auth.data.user)})
+        };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
 
     return (
 
@@ -15,16 +26,16 @@ export default function Login() {
 
             <div class="container">
                 <h1 class="title">UniRent</h1>
-                <form action="">
+                <form action="" onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <div class="form-group">
                         <h2>Email:</h2>
-                        <input class="form-control" type="username" />
+                        <input class="form-control" type="email" onChange={(e) => setEmail(e.target.value)}/>
                     </div>
 
                     <div class="form-group">
                         <h2>Password:</h2>
-                        <input class="form-control" type="password" />
+                        <input class="form-control" type="password" onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     <Link to="/search">
                         <button class="btn" type="submit" onClick={loginCheck}>Submit</button>
