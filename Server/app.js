@@ -126,24 +126,34 @@ app.post("/user/:email/:password/:type/:name", async (req, res) => {
 *  Notes:
 *  - Properties are returned based on distance (km) calculated between specified user location and potential properties.
 */
-app.get('/property', (req, res) => {
+app.get('/property/:address/:type/:bed/:bath/:rent/:furnishing/:sqFeet/:landlordID', (req, res) => {
 
-   let temp = {
-      property_id: 136,
-      name: "Dalgetty Drive",
-      address: "5736 Dalgetty Drive NW",
-      country: "Canada",
-      province: "Alberta",
-      monthly_cost: "500",
-      min_term: "4",
-      max_term: "16",
-      landlord_id: "e7f9851d-d304-4af2-b5d8-33b85abca028",
-      img: "https://s3.amazonaws.com/lws_lift/shelter/images/gallery/full/1550964127_calgary_residential_photos_017.jpg"
-   }
+   
+   //var sql = `INSERT into review (name, time, text, property_id) VALUES (\"${req.params.name}\", \"${current.toLocaleString()}\", \"${req.params.text}\", ${parseInt(req.params.property_id)})`
 
-   res.send(temp)
+   var sql = `INSERT into property (address, type, bed, bath, rent, furnishing, sqFeet, landlordID) VALUES 
+
+		(	\"${req.params.address}\", 
+			\"${req.params.type}\", 
+			${parseInt(req.params.bed)}, 
+			${parseInt(req.params.bath)},
+			${parseInt(req.params.rent)},
+			false,
+			${parseInt(req.params.sqFeet)},
+			${parseInt(req.params.landlordID)}	)`
+
+   console.log(sql)
+
+   var params = []
+
+   
+   db.all(sql, params, (err, rows) => {
+      if (err) {
+         console.log(err.message)
+      }
+      console.log("added property successfully")
+   })
 })
-
 
 /* Publish Property API
 *  Request Type: POST
