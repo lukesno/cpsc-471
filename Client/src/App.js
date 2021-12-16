@@ -9,6 +9,7 @@ import Profile from  './Pages/Profile';
 import Navbar from './Components/Navbar';
 import Search from './Pages/Search';
 import UserRegistration from './Pages/UserRegistration';
+import PropertyView from './Pages/PropertyView';
 
 function App() {
 
@@ -16,13 +17,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
-                
+      <div className="App">    
           <Routes>
             <Route exact path="/" element={<div><Login/></div>}/>
             <Route exact path="/search" element={<div><Navbar/><Search/></div>}/>
             <Route exact path="/profile" element={<div><Navbar/><Profile/></div>}/>
             <Route exact path="/register" element={<div><UserRegistration/></div>}/>
+            <Route exact path="/search/property" element={<div><Navbar/><PropertyView /></div>}/>
           </Routes>
       </div>
     </BrowserRouter>

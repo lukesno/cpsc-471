@@ -235,6 +235,50 @@ app.get('/distance/:home/:uni', async (req, res) => {
    }
 })
 
+/* Compare University with all Properties API
+*  Request Type: GET
+*  
+*  Internal API used by GET '/property'
+*  Provided with 2 coordinates, return distance between them
+*  Property coordinates passed in here will be in the country and province specified by user input (reducing number of calculations per search)
+*
+*  Notes:
+*  - Utilizes Haversine algorithm to convert longitude/latitude distances to km
+*/
+app.get('/retrieve/:uni/:distance', async (req, res) => {
+   // IMPORTANT: Pass in addresses with + instead of spaces
+   // Ex: 2500+University+Dr+NW+CA instead of 2500 University Dr NW CA
+   try {
+      var sql = "select * from property"
+      // var sql2 = "INSERT INTO auth (username, password) VALUES ('abc123', 'abc123')"
+      var params = []
+      
+   
+      db.all(sql, params, async (err, rows) => {
+         if (err) {
+            console.log(err.message)
+         }
+
+         const data = {properties: []}
+         for(row in rows) {
+            const curr_property = rows[row]
+            const curr_address = curr_property.address.replace(/ /g,"+");
+            const distance_response = await axios.get(`http://localhost:8081/distance/${curr_address}/${req.params.uni}`)
+            const found_distance = distance_response.data.kilometer
+            if(found_distance <= parseInt(req.params.distance)) {
+               rows[row].distance = found_distance
+               data.properties.push(rows[row]);
+            }
+         }
+
+         res.json({
+            ...data
+         })
+      })
+   } catch (err) {
+      console.log(err);
+   }
+})
 
 // --------------------------------------------------------------------------------------------- //
 
