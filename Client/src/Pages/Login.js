@@ -15,7 +15,7 @@ export default function Login() {
         .then(auth => {
             console.log(auth) 
             setUser(auth.data.user)})
-        };
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();

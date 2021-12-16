@@ -5,19 +5,20 @@ import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 export default function UserRegistration() {
 
     const [type, setType] = useState('');
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
 
 
+    const register = () => {
+        console.log("Register button clicked");
+        const x = { type, email, password, name };
+        console.log(x);
+        fetch(`http://localhost:8081/user/${email}/${password}/${type}/${name}`, {method: "POST"})
+    };
+
     const handleSubmit = event => {
         event.preventDefault();
-    }
-
-    const registerClicked = () => {
-        console.log("Register button clicked");
-        const x = { type, username, password, name };
-        console.log(x);
     }
 
     return (
@@ -33,13 +34,13 @@ export default function UserRegistration() {
                     <p>Full Name:</p>
                     <input name="name" value={name} onChange={(e)=>setName(e.target.value)}/>
                      <p>Email:</p>
-                    <input name="username" value={username} onChange={(e)=>setUsername(e.target.value)}/>
+                    <input name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                     <p>Password:</p>
                     <input name="password" type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 </form>
                 <div className='buttonDiv'>
                     <Link to="/">
-                        <button onClick={registerClicked} type="submit">Submit</button>
+                        <button onClick={register} type="submit">Submit</button>
                     </Link>
                 </div>                
         </div>
